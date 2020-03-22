@@ -1,9 +1,35 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+            },
     "variables": {},
-    "resources": [],
+    "resources": [
+    {
+        "name": "armdemostorageaccount01",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "tags": {
+            "displayName": "armdemostorageaccount01"
+        },        
+        "sku":{"name":"Standard_LRS"
+        },
+        "kind":"StorageV2"
+    },
+    {
+        "name": "armdemodatalakestore1",
+        "type": "Microsoft.DataLakeStore/accounts",
+        "apiVersion": "2016-11-01",
+        "location": "[resourceGroup().location]",
+        "properties": {
+            "newTier": "Consumption", 
+            "encryptionState": "Enabled"
+        }
+    }
+    
+    
+    ],
     "outputs": {},
     "functions": []
 }
